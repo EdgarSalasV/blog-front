@@ -1,0 +1,51 @@
+.container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: var(--pad-in);
+}
+
+/* NAV  */
+.nav {
+    display: inline-block;
+    margin: 2em auto;
+}
+
+
+/* HEADER */
+.header {
+    width: 100%;
+    position: relative;
+    display: inline-flex;
+}
+.header img {
+    width: 100%;
+}
+.actions {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    background: var(--dark);
+}
+.actions > button {
+    cursor: pointer;
+    height: 2.5em;
+    width: 2.5em;
+    border: none;
+    background: none;
+    outline: none;
+    font-weight: bold;
+    font-size: 1em;
+}
+
+.actions > button:first-child {
+    color: white;
+}
+.actions > button:last-child {
+    color: var(--gold);
+}
+
+/* MAIN */
+.main {
+    font-family: Arial, Helvetica, sans-serif;
+}
