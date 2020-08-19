@@ -1,4 +1,4 @@
-import {Subcontact} from '../../components/subcontact'
+import {Subcontact} from '../../views/subcontact'
 const index = () => {
   return (
     <div>

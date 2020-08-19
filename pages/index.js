@@ -1,13 +1,15 @@
-import styles from "../styles/Home.module.css";
-import SectionProyects from '../components/home/sectionProyects'
-import SectionFeatures from '../components/home/sectionFeatures'
+// import styles from "../styles/Home.module.css";
+import SectionProyects from '../views/home/sectionProyects'
+import SectionFeatures from '../views/home/sectionFeatures'
 
 export default function Home() {
   return (
-    <div className={styles.container}>
-      <main className={styles.main}>
-        <SectionProyects/>
+    <div>
+      {/* <div className={styles.container}> */}
+      {/* <main className={styles.main}> */}
+      <main>
         <SectionFeatures/>
+        <SectionProyects/>
       </main>
     </div>
   );

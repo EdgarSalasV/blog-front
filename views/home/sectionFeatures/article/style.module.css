@@ -1,0 +1,41 @@
+.article > * {
+    width: 100%;
+    padding: 1em var(--pad-in-x);
+    background: var(--dark);
+    color: white;
+}
+.main {
+
+}
+.aside {
+    clip-path: polygon(
+        0% 0%, 100% 0%,
+        100% 100%, 0% 0% );
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 0;
+    padding-bottom: 3em;
+}
+.title {
+    display: flex;
+    align-items: center;
+    font-size: 2em;
+    text-transform: uppercase;
+}
+.title {
+    color: var(--gold);
+    font-weight: bold;
+}
+.title i {
+    margin-right: .5em;
+    color: white;
+}   
+.button {
+    background: var(--gold);
+    color: var(--dark);
+    border: none;
+    padding: .5em 3.75em;
+    font-weight: bold;
+    outline: none;
+    cursor: pointer;
+}

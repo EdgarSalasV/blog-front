@@ -1,3 +1,17 @@
+:root {
+  --dark: #171717;
+  --gold: #F8E71D;
+  --gold-rgb: 248, 231, 29;
+  --pad-global: 0 3em;
+  --pad-in-y: 1em;
+  --pad-in-x: 3.5em;
+  --pad-in: var(--pad-in-y) var(--pad-in-x);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
 html,
 body {
   padding: 0;
@@ -6,11 +20,12 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
-* {
-  box-sizing: border-box;
+p, h1, h2, h3, h4, h5, h6 {
+  margin-bottom: 16px; 
 }
