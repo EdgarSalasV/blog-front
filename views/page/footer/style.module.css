@@ -15,6 +15,10 @@
 .footer > h4 {
     font-size: 1.65em;
 }
+.footer > * {
+    position: relative;
+    z-index: 10;
+}
 
 
 
@@ -23,6 +27,7 @@
     color: var(--gold);
     font-size: 1.5em;
     margin: .5em;
+    cursor: pointer;
 }
 
 
