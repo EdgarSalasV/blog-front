@@ -2,8 +2,8 @@ import Head from 'next/head'
 import Aside from './aside'
 import Header from './header'
 import Footer from './footer'
-import { createContext, useState, useMemo, useEffect } from 'react'
-
+import { createContext, useState, useEffect } from 'react'
+import classes from './style.module.css'
 export const AppContext = createContext(null)
 
 const _body = `
@@ -146,7 +146,7 @@ const index = ({ children }) => {
                     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossOrigin="anonymous"/>
                 </Head>
                 <Header />
-                <main> {children} </main>
+                <main className={classes.mainContainer}> {children} </main>
                 <Footer />
             </div>
         </AppContext.Provider>

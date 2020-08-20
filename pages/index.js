@@ -18,13 +18,13 @@ export default function Home({ initValues }) {
   }, [])
 
   return (
-    <div>
+    <>
       <Head>
         <title>Boreal - 3D </title>
       </Head>
       <SectionFeatures/>
       <SectionProyects/>
-    </div>
+    </>
   );
 }
 

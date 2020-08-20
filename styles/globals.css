@@ -1,6 +1,7 @@
 :root {
   --dark: #171717;
   --gold: #F8E71D;
+  --gray: #F4F5F7;
   --gold-rgb: 248, 231, 29;
   --pad-global: 0 3em;
   --pad-in-y: 1em;
@@ -28,4 +29,20 @@ body {
 
 p, h1, h2, h3, h4, h5, h6 {
   margin-bottom: 16px; 
+}
+
+h1 {
+  font-size: 40px;
+}
+
+h2 {
+  font-size: 32px;
+}
+
+h3 {
+  font-size: 20px;
+}
+
+h2.secondTitle {
+  font-weight: bold;
 }
