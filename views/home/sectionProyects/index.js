@@ -1,6 +1,7 @@
 import classes from './style.module.css'
-import { useContext } from 'react'
+import { useContext, useRef } from 'react'
 import { AppContext } from '../../page'
+import useObserverSection from '../../../utils/useObserverSection'
 
 const Type = ({ type }) => {
 	const { changeTypeProjectSelected, typeProjectSelected } = useContext(AppContext)
@@ -9,7 +10,8 @@ const Type = ({ type }) => {
 			style={{
 				textTransform: 'uppercase',
 				fontWeight: type === typeProjectSelected ? 'bold' : 'normal',
-				cursor: 'pointer'
+				cursor: 'pointer',
+				margin: '0 .5em'
 			}}> 
 			{ type } </span>
 	)
@@ -36,10 +38,15 @@ const Types = () => {
 
 // projects, setProjects, typeProject
 const sectionProyects = () => {
+	// Subscribe to the Observer Mutation API using custom hook
+	// to get exact position of selected title of the nav header 
+    const sectionRef = useRef(null)
+	useObserverSection(sectionRef)
+	
 	const { projectSelected, changeProjectSelected } = useContext(AppContext)
 	const { img, name, location, software } = projectSelected 
 	return (
-		<section id='who-we-are' className={classes.container}>
+		<section id='who-we-are' className={classes.container} ref={sectionRef}>
 			<Types />
 			<header className={classes.header}>
 				<img src={img} alt="" />
