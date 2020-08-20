@@ -3,17 +3,17 @@ import { useContext, useState, useEffect } from 'react'
 import { AppContext } from '../../'
 
 const LinkHash = ({ id, children, ...props }) => {
+    const { hash } = useContext(AppContext)
+    // const [selected, changeSelected] = useState(false)
 
-    const [selected, changeSelected] = useState(false)
-
-    useEffect(() => {
-        window.addEventListener("hashchange", () => {
-            changeSelected(window.location.hash === '#' + id)
-        })
-    }, [])
+    // useEffect(() => {
+    //     window.addEventListener("hashchange", () => {
+    //         changeSelected(window.location.hash === '#' + id)
+    //     })
+    // }, [])
     return (
         <a href={'#'+id} className={classes.link} style={{ 
-            fontWeight: selected ? 'bold' : 'normal',
+            fontWeight: hash === id ? 'bold' : 'normal',
         }} {...props}> { children } </a>
     )
 }

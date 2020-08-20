@@ -1,7 +1,7 @@
-import classes from './style.module.css'
 import { useContext, useRef } from 'react'
 import { AppContext } from '../../page'
 import useObserverSection from '../../../utils/useObserverSection'
+import classes from './style.module.css'
 
 const Type = ({ type }) => {
 	const { changeTypeProjectSelected, typeProjectSelected } = useContext(AppContext)
