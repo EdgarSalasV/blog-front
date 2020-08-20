@@ -4,6 +4,7 @@ import Header from './header'
 import Footer from './footer'
 import { createContext, useState, useEffect } from 'react'
 import classes from './style.module.css'
+import { useRouter } from 'next/router'
 export const AppContext = createContext(null)
 
 const _body = `
@@ -76,7 +77,24 @@ const PROJECT_TYPES = [
     'PRODUCT DESIGN'
 ]
 
+const Layout = ({ children }) => {
+    return (
+        <>
+        <Aside />
+        <div className={classes.container}>
+            <Head>
+                <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossOrigin="anonymous"/>
+            </Head>
+            <Header />
+            <main className={classes.mainContainer}> {children} </main>
+            <Footer />
+        </div>
+        </>
+    )
+}
+
 const index = ({ children }) => {
+    const { pathname } = useRouter()
     const [hash, setHash] = useState('')
     const [observer, setObserver] = useState({})
     const [articles, setArticles] = useState(ARTICLES)
@@ -86,6 +104,8 @@ const index = ({ children }) => {
     
     const [projects, setProjects] = useState(PROJECTS)
     const [projectTypes, setProjectTypes] = useState(PROJECT_TYPES)
+
+    const [user, setUser] = useState(null)
 
     const selectArticle = article => {
         const tmpArticles = articles.filter(({ title }) => title !== article.title)
@@ -134,7 +154,7 @@ const index = ({ children }) => {
         }
       );
       setObserver(observer);
-    }, []);
+    }, [])
 
     return (
         <AppContext.Provider value={{
@@ -146,16 +166,14 @@ const index = ({ children }) => {
 
             projects, setProjects,
             projectTypes, setProjectTypes,
+
+            user, setUser
         }}>
-            <Aside />
-            <div className={classes.container}>
-                <Head>
-                    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossOrigin="anonymous"/>
-                </Head>
-                <Header />
-                <main className={classes.mainContainer}> {children} </main>
-                <Footer />
-            </div>
+            {
+                pathname !== '/login'
+                    ? <Layout> { children } </Layout>
+                    : children
+            }
         </AppContext.Provider>
     );
 };

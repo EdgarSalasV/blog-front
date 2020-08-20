@@ -1,15 +1,7 @@
 import classes from './style.module.css'
 import Nav from './nav'
-import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
-
-const Logo = () => 
-<Link href='/'>
-    <a>
-        <img src='/images/logo2.png' alt=""/>
-    </a>
-</Link>
-
+import Logo from '../../../sharedComponents/logo'
 
 const Header = () => {
     const headerRef = useRef()
