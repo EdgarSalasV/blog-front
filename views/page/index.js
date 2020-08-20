@@ -123,11 +123,18 @@ const index = ({ children }) => {
     }
 
     useEffect(() => {
-        const observer = new IntersectionObserver(([ { target } ]) => {
-            setHash(target.id)
-        })
-        setObserver(observer)
-    }, [])
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          setHash(entry.target.id);
+        },
+        {
+          root: null,
+          rootMargin: "0px",
+          threshold: 0.9,
+        }
+      );
+      setObserver(observer);
+    }, []);
 
     return (
         <AppContext.Provider value={{

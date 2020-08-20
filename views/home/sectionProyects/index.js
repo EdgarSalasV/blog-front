@@ -1,3 +1,5 @@
+import { useRef } from "react";
+import useObserverSection from "../../../utils/useObserverSection";
 import classes from './style.module.css'
 import { useContext } from 'react'
 import { AppContext } from '../../page'
@@ -38,8 +40,11 @@ const Types = () => {
 const sectionProyects = () => {
 	const { projectSelected, changeProjectSelected } = useContext(AppContext)
 	const { img, name, location, software } = projectSelected 
-	return (
-		<section id='who-we-are' className={classes.container}>
+	const sectionRef = useRef();
+  useObserverSection(sectionRef);
+
+  return (
+    <section id="who-we-are" className={classes.container} ref={sectionRef}>
 			<Types />
 			<header className={classes.header}>
 				<img src={img} alt="" />

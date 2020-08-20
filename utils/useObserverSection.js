@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect} from 'react'
+import { useContext, useEffect} from 'react'
 import { AppContext } from '../views/page'
 
 const useObserverSection = sectionRef => {
@@ -7,12 +7,12 @@ const useObserverSection = sectionRef => {
 
     useEffect(() => {
         const section = sectionRef.current
-        if(observer.observer) {
-            observer.observer(section)
+        if(observer.observe) {
+            observer.observe(section)
         }
         if(observer.unobserve) {
             return () => {
-                observe.unobserve(section)
+                observer.unobserve(section)
             }
         }
     }, [observer])
