@@ -24,7 +24,7 @@ const getCardData = () => {
         <img src={image.url + i} alt={image.alt} />
       </div>
       <h3>
-        {title} <em className={classes["em" + tag.color]}>{tag.title}</em>
+        {title} <em className={"em" + tag.color}>{tag.title}</em>
       </h3>
       <p>{smallDescription}</p>
       <Link href="/blog/[id]" as={"/blog/" + (id + i)}>

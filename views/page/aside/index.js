@@ -6,7 +6,7 @@ const Aside = () => {
         <aside className={classes.aside}>
             <span> By Guaoustudio 2019 |</span> 
             <Link href='/terms'>
-                <a style={{color: 'var(--gold)'}}>
+                <a className={classes.link}>
                     Terms and Conditions  
                 </a>
             </Link>

@@ -10,12 +10,25 @@
     width: 100%;
 }
 
-/* NAV  */
+/* #region Type */
+.type {
+    text-transform: uppercase;
+    cursor: pointer;
+    margin: 0.5em;
+}
+.typeSelected {
+    font-weight: bold;
+}
+
+/* #endregion */
+
+
+/* #region NAV  */
 .nav {
     display: inline-block;
     margin: 2em auto;
 }
-
+/* #endregion */
 
 /* #region HEADER */
 .header {
@@ -51,11 +64,13 @@
 .actions > button:last-child {
     color: var(--gold);
 }
-/* #enregion  */
+/* #endregion  */
 
 
-/* MAIN */
+/* #region MAIN */
 .main {
     
     font-family: Arial, Helvetica, sans-serif;
 }
+/* #endregion */
+

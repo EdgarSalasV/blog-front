@@ -148,7 +148,7 @@ const index = ({ children }) => {
             projectTypes, setProjectTypes,
         }}>
             <Aside />
-            <div style={{ padding: 'var(--pad-global)'}}>
+            <div className={classes.container}>
                 <Head>
                     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossOrigin="anonymous"/>
                 </Head>

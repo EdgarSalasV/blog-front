@@ -8,18 +8,7 @@ const Footer = () => {
   useObserverSection(sectionRef);
   return (
     <footer id="contact-us" className={classes.footer} ref={sectionRef}>
-      <img
-        style={{
-          position: "absolute",
-          right: 0,
-          zIndex: 0,
-          top: "50%",
-          transform: "translateY(-50%)",
-          height: "90%",
-        }}
-        src="/images/footer/section.png"
-        alt="background image"
-      />
+      <img src="/images/footer/section.png" alt="background image" />
       <h4>CONTACT US</h4>
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus

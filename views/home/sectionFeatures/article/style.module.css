@@ -24,16 +24,6 @@
     margin-right: .5em;
     color: white;
 }   
-.button {
-    background: var(--gold);
-    color: var(--dark);
-    border: none;
-    padding: .5em 3.75em;
-    font-weight: bold;
-    outline: none;
-    cursor: pointer;
-}
-
 
 @media (max-width: 700px) {
     .article {
