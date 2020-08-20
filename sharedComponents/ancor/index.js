@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 
-const Ancor = ({ href='/', text='' }) => {
+const Link = ({ href='/', text='' }) => {
     const router = useRouter()
     const isCurrent = router.pathname === href
     return (
@@ -13,4 +13,4 @@ const Ancor = ({ href='/', text='' }) => {
     )
 }
 
-export default Ancor
+export default Link

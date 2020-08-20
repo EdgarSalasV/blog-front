@@ -77,7 +77,7 @@ const PROJECT_TYPES = [
 ]
 
 const index = ({ children }) => {
-    const [hash, setHash] = useState('what-we-do')
+    const [hash, setHash] = useState('')
     const [observer, setObserver] = useState({})
     const [articles, setArticles] = useState(ARTICLES)
     
@@ -130,7 +130,7 @@ const index = ({ children }) => {
         {
           root: null,
           rootMargin: "0px",
-          threshold: 0.9,
+          threshold: 0.83,
         }
       );
       setObserver(observer);

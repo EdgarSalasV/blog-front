@@ -4,7 +4,9 @@ import Article from './article'
 import Grid from './Grid'
 
 const index = () => {
-    const sectionRef = useRef()
+    // Subscribe to the Observer Mutation API using custom hook
+    // to get exact position of selected title of the nav header 
+    const sectionRef = useRef(null)
     useObserverSection(sectionRef)
     
     return (
