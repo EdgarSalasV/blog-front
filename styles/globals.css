@@ -46,3 +46,18 @@ h3 {
 h2.secondTitle {
   font-weight: bold;
 }
+
+em {
+  padding: 0.25em;
+  background-color: #eddbff;
+  border-radius: 4px;
+  margin-right: 0.25em;
+}
+em.emRed {
+  background-color: red !important;
+  
+}
+em.emBlue {
+  background-color: #3773FF !important;
+  color: white;
+}

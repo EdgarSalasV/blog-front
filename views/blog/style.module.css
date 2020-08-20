@@ -34,12 +34,6 @@
   align-items: start;
 }
 
-.card h3 em {
-  padding: 0.25em;
-  background-color: #eddbff;
-  border-radius: 4px;
-}
-
 .card p {
   color: #757575;
   line-height: 1.5;
@@ -59,12 +53,4 @@
 .blogTitle {
   padding-top: 25px;
   text-align: center;
-}
-
-.emRed {
-  background-color: red !important;
-  
-}
-.emBlue {
-  background-color: blue !important;
 }
