@@ -4,9 +4,6 @@
     background: var(--dark);
     color: white;
 }
-.main {
-
-}
 .aside {
     clip-path: polygon(
         0% 0%, 100% 0%,
@@ -19,12 +16,9 @@
 .title {
     display: flex;
     align-items: center;
-    font-size: 2em;
-    text-transform: uppercase;
-}
-.title {
     color: var(--gold);
-    font-weight: bold;
+    text-transform: uppercase;
+
 }
 .title i {
     margin-right: .5em;

@@ -1,11 +1,11 @@
-import {Subcontact} from '../../views/subcontact'
+import Blog from "../../views/blog";
+
 const index = () => {
   return (
-    <div>
-      <h1>hola</h1>
-      <Subcontact/>
-    </div>
-  )
-}
+    <>
+      <Blog />
+    </>
+  );
+};
 
 export default index;

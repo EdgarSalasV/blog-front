@@ -3,17 +3,17 @@ import { useContext } from 'react'
 import { AppContext } from '../../../page'
 
 
-const Article = ({ article={} }) => {
+const Article = () => {
 	const { articles } = useContext(AppContext)
 	const { title, body, icon } = articles[0]
 
 	return (
 		<section className={classes.article}>
 			<main className={classes.main}> 
-			    <h3 className={classes.title}>
+			    <h2 className={`${classes.title} secondTitle`}>
 					<i className={icon}></i>
 					{ title }
-				</h3>
+				</h2>
                 <div dangerouslySetInnerHTML={{__html: body}}></div>
             </main>
             <aside className={classes.aside}>
