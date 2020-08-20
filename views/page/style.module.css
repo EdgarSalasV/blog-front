@@ -1,3 +1,7 @@
+.container {
+  padding: var(--pad-global);
+}
+
 .mainContainer {
   background-color: var(--gray);
 }

@@ -61,3 +61,20 @@ em.emBlue {
   background-color: #3773FF !important;
   color: white;
 }
+
+.btnAction {
+  background: var(--gold);
+  color: var(--dark);
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: .5em 3.75em;
+}
+
+.btnAction:hover {
+  background: rgba(var(--gold-rgb), .7);
+}
+
+.btnAction:active {
+  background: rgba(var(--gold-rgb), .9);
+}

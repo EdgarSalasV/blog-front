@@ -1,18 +1,14 @@
-import classes from './style.module.css'
 import { useContext, useRef } from 'react'
 import { AppContext } from '../../page'
 import useObserverSection from '../../../utils/useObserverSection'
+import classes from './style.module.css'
 
 const Type = ({ type }) => {
 	const { changeTypeProjectSelected, typeProjectSelected } = useContext(AppContext)
+	const classSelected = type === typeProjectSelected ? classes.typeSelected : ''
 	return (
 		<span onClick={()=>changeTypeProjectSelected(type)}
-			style={{
-				textTransform: 'uppercase',
-				fontWeight: type === typeProjectSelected ? 'bold' : 'normal',
-				cursor: 'pointer',
-				margin: '0 .5em'
-			}}> 
+			className={`${classes.type} ${classSelected}`}>
 			{ type } </span>
 	)
 }
@@ -36,7 +32,6 @@ const Types = () => {
 	)
 }
 
-// projects, setProjects, typeProject
 const sectionProyects = () => {
 	// Subscribe to the Observer Mutation API using custom hook
 	// to get exact position of selected title of the nav header 

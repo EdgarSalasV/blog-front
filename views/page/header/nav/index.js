@@ -1,7 +1,8 @@
 import classes from './style.module.css'
-import { useState, useEffect } from 'react'
+import { useState, useContext } from 'react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
+import { AppContext } from '../..'
 
 const LinkCustom = ({ href, children }) => {
     const { pathname } = useRouter()
@@ -18,18 +19,16 @@ const LinkCustom = ({ href, children }) => {
 
 const LinkHash = ({ id, children, ...props }) => {
     const { pathname } = useRouter()
-    const [selected, changeSelected] = useState(false)
+    const { hash } = useContext(AppContext)
+    const classesLink = `
+        ${classes.link}
+        ${hash === id ? classes.linkBold : ''}
+    `
 
-    useEffect(() => {
-        window.addEventListener("hashchange", () => {
-            changeSelected(window.location.hash === '#' + id)
-        })
-    }, [])
     if(pathname === '/') {
         return (
-            <a href={'#'+id} className={classes.link} style={{ 
-                fontWeight: selected ? 'bold' : 'normal',
-            }} {...props}> { children } </a>
+            <a href={'#'+id} className={classesLink} 
+                {...props}> { children } </a>
         )
     } else {
         return (

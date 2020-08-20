@@ -11,15 +11,20 @@
 
 .footer > * { 
     text-align: center;
+    position: relative;
+    z-index: 10;
 }
 .footer > h4 {
     font-size: 1.65em;
 }
-.footer > * {
-    position: relative;
-    z-index: 10;
+.footer > img {
+    position: absolute;
+    right: 0;
+    z-index: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 90%;
 }
-
 
 
 /* ICONS SOCIAL ´NETWORKS */

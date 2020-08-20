@@ -21,6 +21,7 @@ const Header = () => {
     }, [])
     return (
         <>
+        {/* get space dynamiclly from the height of header */}
         <div style={{marginTop: height}}></div>
         <header className={classes.header} ref={headerRef}>
             <Logo />

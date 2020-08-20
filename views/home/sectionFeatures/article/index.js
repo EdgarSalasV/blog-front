@@ -17,7 +17,7 @@ const Article = () => {
                 <div dangerouslySetInnerHTML={{__html: body}}></div>
             </main>
             <aside className={classes.aside}>
-                <button className={classes.button}> HIRE US </button>
+                <button className='btnAction'> HIRE US </button>
             </aside>
 		</section>
 	)
