@@ -33,3 +33,13 @@
     outline: none;
     cursor: pointer;
 }
+
+
+@media (max-width: 700px) {
+    .article {
+        font-size: 12px;
+    }
+    .article h2{
+        font-size: 2em;
+    }
+}

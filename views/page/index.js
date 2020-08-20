@@ -77,7 +77,7 @@ const PROJECT_TYPES = [
 ]
 
 const index = ({ children }) => {
-    const [hash, setHash] = useState('what-we-do')
+    const [hash, setHash] = useState('')
     const [observer, setObserver] = useState({})
     const [articles, setArticles] = useState(ARTICLES)
     
@@ -121,13 +121,34 @@ const index = ({ children }) => {
                 break
         }
     }
+    const [isFirstTime, setIsFirstTime] = useState(true)
 
     useEffect(() => {
-        const observer = new IntersectionObserver(([ { target } ]) => {
-            setHash(target.id)
-        })
-        setObserver(observer)
-    }, [])
+        const getIsFirstTime = () => isFirstTime
+        console.log(isFirstTime)
+        if(!observer.observe) {
+            // TODO RESOLVER COHERENCIA ENTRE ID, LOCATION Y LINKS 
+            console.log('instanciación')
+            const observer = new IntersectionObserver(([ entry ]) => {
+                console.log('isFirstTime: ', isFirstTime)
+                const { target } = entry
+                const hash = '#'+ target.id
+                console.log('qué es? : ',getIsFirstTime())
+                if(!getIsFirstTime()) {
+                    console.log('no es la primera')
+                    window.location.hash = hash
+                } 
+                if(hash === window.location.hash) {
+                    console.log('Mi primera vez')
+                    window.location.hash = hash
+                    setIsFirstTime(false)
+                }
+            }, {
+                threshold: 0.7
+            })
+            setObserver(observer)
+        }
+    }, [isFirstTime, observer])
 
     return (
         <AppContext.Provider value={{

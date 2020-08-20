@@ -48,3 +48,9 @@
     height: 2px;
     background: #877F1A;
 }
+
+@media (max-width: 700px) {
+    .footer {
+        font-size: 12px;
+    }
+}

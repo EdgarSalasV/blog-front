@@ -1,4 +1,6 @@
+import { useRef } from 'react'
 import classes from './style.module.css'
+import useObserverSection from '../../../utils/useObserverSection'
 
 const InfoContact = ({ title, children }) => {
   return (
@@ -40,8 +42,13 @@ const Icons = () => {
 }
 
 const Footer = () => {
+  // Subscribe to the Observer Mutation API using custom hook
+  // to get exact position of selected title of the nav header 
+  const footerRef = useRef(null)
+  useObserverSection(footerRef)
+  
   return (
-    <footer id='contact-us' className={classes.footer}>
+    <footer id='contact-us' className={classes.footer} ref={footerRef}>
       <img style={{ position: 'absolute', right: 0, zIndex: 0, top: '50%', transform: 'translateY(-50%)', height: '90%' }} src='/images/footer/section.png' alt='background image' />
       <h4>CONTACT US</h4>
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus aperiam odit dolorem officia reiciendis similique accusantium earum deserunt provident. Veritatis a reiciendis dolor ut dicta aperiam voluptas harum sit delectus?</p>
