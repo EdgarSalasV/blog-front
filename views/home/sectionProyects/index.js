@@ -1,52 +1,51 @@
 import classes from './style.module.css'
+import { useContext } from 'react'
+import { AppContext } from '../../page'
 
-const _project = {
-	img: 'https://picsum.photos/500/300',
-	name: 'Mediterranean Home',
-	location: 'Cabo San Lucas, México',
-	software: '3D Max, Vray'
-}
-
-const Type = ({ type, changeType }) => {
+const Type = ({ type }) => {
+	const { changeTypeProjectSelected, typeProjectSelected } = useContext(AppContext)
 	return (
-		<span onClick={()=>changeType(type)}
+		<span onClick={()=>changeTypeProjectSelected(type)}
 			style={{
-				textTransform: 'uppercase'
+				textTransform: 'uppercase',
+				fontWeight: type === typeProjectSelected ? 'bold' : 'normal',
+				cursor: 'pointer'
 			}}> 
 			{ type } </span>
 	)
 }
 
-const getTypes = types => {
-	return types.map((type, index) =>
-		<span key={index}>	
-			<span style={{
-				padding: '0 .75em'
-			}}>  |  </span>
-			<Type type={type} />
-		</span>
+const Types = () => {
+	const { projectTypes  } = useContext(AppContext)
+	return (
+		<nav className={classes.nav}>
+			<Type type='all' />
+			{
+				projectTypes.map((type, i) => {
+					return(
+						<span key={i}>
+							<span> | </span>
+							<Type type={type} key={i} />
+						</span>
+					)
+				})
+			}
+		</nav>
 	)
 }
-const _types = [
-	'RESIDENTIAL',
-	'COMMERCIAL',
-	'PRODUCT DESIGN'
-]
 
 // projects, setProjects, typeProject
-const sectionProyects = ({ types=_types, project=_project, next=()=>{}, previous=()=>{} }) => {
-	const { img, name, location, software } = project
+const sectionProyects = () => {
+	const { projectSelected, changeProjectSelected } = useContext(AppContext)
+	const { img, name, location, software } = projectSelected 
 	return (
 		<section id='who-we-are' className={classes.container}>
-			<nav className={classes.nav}>
-				<Type type='all' />
-				{ getTypes(types) }
-			</nav>
+			<Types />
 			<header className={classes.header}>
 				<img src={img} alt="" />
 				<div className={classes.actions}>
-					<button onClick={previous}> {'<'} </button>
-					<button onClick={next}> {'>'} </button>
+					<button onClick={() => changeProjectSelected('previous') }> {'<'} </button>
+					<button onClick={() => changeProjectSelected('next') }> {'>'} </button>
 				</div>
 			</header>
 			<main className={classes.main}>

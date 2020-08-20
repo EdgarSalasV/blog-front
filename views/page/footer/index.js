@@ -42,11 +42,11 @@ const Icons = () => {
 const Footer = () => {
   return (
     <footer id='contact-us' className={classes.footer}>
+      <img style={{ position: 'absolute', right: 0, zIndex: 0, top: '50%', transform: 'translateY(-50%)', height: '90%' }} src='/images/footer/section.png' alt='background image' />
       <h4>CONTACT US</h4>
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus aperiam odit dolorem officia reiciendis similique accusantium earum deserunt provident. Veritatis a reiciendis dolor ut dicta aperiam voluptas harum sit delectus?</p>
       <Contacts />
       <Icons />
-      <img style={{ position: 'absolute', right: 0, top: '50%', transform: 'translateY(-50%)', height: '90%' }} src='/images/footer/section.png' alt='background image' />
     </footer>
   )
 }

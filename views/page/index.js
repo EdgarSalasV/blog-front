@@ -32,16 +32,94 @@ const ARTICLES = [
     }
 ]
 
+const PROJECTS = [
+    {
+        type: 'RESIDENTIAL',
+        img: '/images/section-2/1.jpg',
+        name: 'Mediterraean Home',
+        location: 'Cabo San Luis, Mexico',
+        software: '3D Max, Vray'
+    },
+    {
+        type: 'COMERCIAL',
+        img: '/images/section-2/1.jpg',
+        name: 'Comercial Home',
+        location: 'Cabo San Luis, Mexico',
+        software: '3D Max, Vray'
+    },
+    {
+        type: 'COMERCIAL',
+        img: '/images/section-2/1.jpg',
+        name: 'Comercial 2 Home',
+        location: 'Cabo San Luis, Mexico',
+        software: '3D Max, Vray'
+    },
+    {
+        type: 'COMERCIAL',
+        img: '/images/section-2/1.jpg',
+        name: 'Comercial 3 Home',
+        location: 'Cabo San Luis, Mexico',
+        software: '3D Max, Vray'
+    },
+    {
+        type: 'PRODUCT DESIGN',
+        img: '/images/section-2/1.jpg',
+        name: 'Design Home',
+        location: 'Cabo San Luis, Mexico',
+        software: '3D Max, Vray'
+    },
+]
+
+const PROJECT_TYPES = [
+    'RESIDENTIAL',
+    'COMERCIAL',
+    'PRODUCT DESIGN'
+]
 
 const index = ({ children }) => {
     const [hash, setHash] = useState('what-we-do')
     const [observer, setObserver] = useState({})
     const [articles, setArticles] = useState(ARTICLES)
+    
+    const [projectSelected, setProjectSelected] = useState(PROJECTS[0])
+    const [typeProjectSelected, setTypeProjectSelected] = useState('all')
+    
+    const [projects, setProjects] = useState(PROJECTS)
+    const [projectTypes, setProjectTypes] = useState(PROJECT_TYPES)
 
     const selectArticle = article => {
         const tmpArticles = articles.filter(({ title }) => title !== article.title)
         tmpArticles.unshift(article)
         setArticles(tmpArticles)
+    }
+
+    const changeTypeProjectSelected = type => {
+        setTypeProjectSelected(projectTypes.includes(type) ? type : 'all')
+        const firstProject = type.toLowerCase() === 'all' 
+                                ? projects[0] 
+                                : projects.filter(project => project.type === type)[0]
+        setProjectSelected(firstProject)
+    }
+
+    const changeProjectSelected = project => {
+        const projectFilters = typeProjectSelected === 'all' 
+                            ? projects
+                            : projects.filter(_project => 
+                                _project.type === typeProjectSelected)
+        const indice = projectFilters.findIndex(_project => _project === projectSelected)
+
+        switch(project) {
+            case 'next':
+                const nextProject = projectFilters[indice+1] || projectFilters[0]
+                setProjectSelected(nextProject)
+                break
+            case 'previous':
+                const previousProject = projectFilters[indice-1] || projectFilters[projectFilters.length-1]
+                setProjectSelected(previousProject)
+                break
+            default: 
+                break
+        }
     }
 
     useEffect(() => {
@@ -53,7 +131,14 @@ const index = ({ children }) => {
 
     return (
         <AppContext.Provider value={{
-            hash, observer, articles, selectArticle
+            hash, observer, 
+            articles, selectArticle,
+
+            projectSelected, changeProjectSelected, 
+            typeProjectSelected, changeTypeProjectSelected,
+
+            projects, setProjects,
+            projectTypes, setProjectTypes,
         }}>
             <Aside />
             <div style={{ padding: 'var(--pad-global)'}}>
