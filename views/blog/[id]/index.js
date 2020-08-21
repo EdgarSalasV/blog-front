@@ -1,6 +1,7 @@
 import classes from './style.module.css'
 
 const id = ({ blog }) => {
+
     const { title, body, tags } = blog
 
     const getTags = () =>
