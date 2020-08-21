@@ -32,7 +32,7 @@ const id = ({ id }) => {
 	const getTags = () =>
 		blogTags.map(({ title, color }, i) => {
 			return (
-				<em key={i} className={'em' + setCapitalize(color)}>
+				<em key={i} style={{background: color}}>
 					{title}
 				</em>
 			)

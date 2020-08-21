@@ -36,7 +36,7 @@ const index = () => {
         </h3>
         <div>
           { blogTags.map(({color, title},i) =>
-          <em key={i} className={"em" + setCapitalize(color)}>{title}</em>) }
+          <em key={i} style={{background: color}}>{title}</em>) }
         </div>
         <p>{smallDescription}</p>
         <Link href="/blogs/[id]" as={"/blogs/" + id }>

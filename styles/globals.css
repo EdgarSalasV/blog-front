@@ -53,14 +53,6 @@ em {
   border-radius: 4px;
   margin-right: 0.25em;
 }
-em.emRed {
-  background-color: red !important;
-  
-}
-em.emBlue {
-  background-color: #3773FF !important;
-  color: white;
-}
 
 .btnAction {
   background: var(--gold);
