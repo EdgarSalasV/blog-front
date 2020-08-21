@@ -1,8 +1,8 @@
-import axios from 'axios'
+// import axios from 'axios'
 import id from '../../views/blog/[id]'
 
 export async function getServerSideProps({ params }) {
-  // const blog = await axios.get('/blog/' + params).data
+  // const blog = await axios.get('/blogs/' + params).data
   const blog = {
     title: 'Titulaso',
     tags: [
