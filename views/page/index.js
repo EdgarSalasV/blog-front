@@ -5,6 +5,9 @@ import Footer from './footer'
 import { createContext, useState, useEffect } from 'react'
 import classes from './style.module.css'
 import { useRouter } from 'next/router'
+import axios from 'axios'
+import setupAxios from '../../utils/setupAxios'
+
 export const AppContext = createContext(null)
 
 const _body = `
@@ -93,6 +96,7 @@ const Layout = ({ children }) => {
     )
 }
 
+
 const index = ({ children }) => {
     const { pathname } = useRouter()
     const [hash, setHash] = useState('')
@@ -106,6 +110,12 @@ const index = ({ children }) => {
     const [projectTypes, setProjectTypes] = useState(PROJECT_TYPES)
 
     const [user, setUser] = useState(null)
+
+    useEffect(() => {
+        if(user) {
+            setupAxios(axios, user.token)
+        }
+    }, [user])
 
     const selectArticle = article => {
         const tmpArticles = articles.filter(({ title }) => title !== article.title)

@@ -1,6 +1,6 @@
 export const setLogin = (setUser, {token, ...data}) => {
     localStorage.setItem('token', token)
-    setUser(data)
+    setUser({token, ...data})
 } 
 
 export const setLogout = setUser => {

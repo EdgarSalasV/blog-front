@@ -27,6 +27,7 @@
 .nav {
     display: inline-block;
     margin: 2em auto;
+    text-align: center;
 }
 /* #endregion */
 
@@ -74,3 +75,9 @@
 }
 /* #endregion */
 
+
+@media (max-width: 500px) {
+    .container {
+        padding: 1em 0;
+    }
+}

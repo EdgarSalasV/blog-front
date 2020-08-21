@@ -1,19 +1,43 @@
+import { useContext, useState, useEffect } from 'react'
+import { AppContext } from '../../views/page'
 import Link  from "next/link";
 import classes from "./style.module.css";
+import setCapitalize from '../../utils/setCapitalize'
 
-const index = ({ blogs }) => {
+const index = () => {
+  const [blogs, setBlogs] = useState([])
+  const { user } = useContext(AppContext)
+
+  useEffect(() => {
+    if(user) {
+      const config = {
+        headers: {
+          'Authorization': 'Bearer ' + user.token
+        }
+      }
+  
+      fetch('http://localhost:3001/blogs', config)
+        .then(res => res.json())
+        .then(setBlogs)
+    }
+  }, [user])
+
   const getCardData = () => blogs.map(
-    ({ id, image, title, tag, smallDescription }, i) => (
+    ({ id, image, title, blogTags, smallDescription }, i) => (
       <article className={classes.card} key={id + i}>
         <div className={classes.cardImage}>
-          <img src={image.url + i} alt={image.alt} />
+          <img src='https://source.unsplash.com/random' alt='Image of Blog' />
         </div>
         <h3>
-          {title} <em className={"em" + tag.color}>{tag.title}</em>
+          {title} 
         </h3>
+        <div>
+          { blogTags.map(({color, title},i) =>
+          <em key={i} className={"em" + setCapitalize(color)}>{title}</em>) }
+        </div>
         <p>{smallDescription}</p>
-        <Link href="/blog/[id]" as={"/blog/" + (id + i)}>
-          <a href="#" className={classes.button}>
+        <Link href="/blogs/[id]" as={"/blogs/" + id }>
+          <a className={`${classes.button} btnAction`}>
             Read more...
           </a>
         </Link>
@@ -23,12 +47,34 @@ const index = ({ blogs }) => {
 
   return (
     <>
-      <h2 className={`secondTitle ${classes.blogTitle}`}>Blogs</h2>
-      <section className={classes.cardRow}>
-        {getCardData()}
-      </section>
+    {
+      user
+        ? (
+          <>
+            <h2 className={`secondTitle ${classes.blogTitle}`}>Blogs</h2>
+            <section className={classes.cardRow}>
+              {getCardData()}
+            </section>
+          </>
+        )
+        : <IsNotLogin />
+    }
     </>
   );
 };
+
+const IsNotLogin = () => {
+  return (
+    <div className={classes.isNotLogin}>
+      <h1>Hey! <br/> You need to login to see the blogs </h1>
+      <Link href='/login'>
+        <a className='btnAction'>
+          Ir al Login
+        </a>
+      </Link>
+    </div>
+
+  )
+}
 
 export default index;

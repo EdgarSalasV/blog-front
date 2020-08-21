@@ -4,6 +4,9 @@
     background: var(--dark);
     color: white;
 }
+.main {
+    text-align: justify;
+}
 .aside {
     clip-path: polygon(
         0% 0%, 100% 0%,
@@ -31,5 +34,13 @@
     }
     .article h2{
         font-size: 2em;
+    }
+}
+
+@media (max-width: 500px) {
+    .aside {
+        clip-path: polygon(
+            0% 0%, 100% 0%,
+            100% 100%, 0% 60%, 0% 0% );
     }
 }

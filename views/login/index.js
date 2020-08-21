@@ -17,12 +17,13 @@ const Input = ({ value, setValue, ...props }) => {
 
 const Login = () => {
     const router = useRouter()
-    const { setUser } = useContext(AppContext) 
+    const { setUser, user } = useContext(AppContext) 
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
 
     const onClickLogin = () => {
-        const body = { username, password }
+        
+        const body = JSON.stringify({ email: username, password })
         const config = {
             method: 'POST',
             body,
@@ -31,18 +32,18 @@ const Login = () => {
             }
         }
 
-        // HardCoded
-        const token = 'asdasd'
-        setLogin(setUser, { token, username })
-        router.push('/user')
-
-        // fetch('/', config)
-        //     .then(res => res.json())
-        //     .then(({ token }) => {
-        //         setLogin(setUser, { token, username })
-        //         router.push('/user')
-        //     })
-        //     .catch(console.error)
+        fetch('http://localhost:3001/users/login', config)
+            .then(res => res.json())
+            .then(({ token }) => {
+                if(token){
+                    setLogin(setUser, { token, username })
+                    router.push('/user')
+                }
+            })
+            .catch(err => {
+                alert('Credenciales inválidas')
+                console.error(err)
+            })
     }
 
     return (

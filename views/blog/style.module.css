@@ -54,3 +54,15 @@
   padding-top: 25px;
   text-align: center;
 }
+
+.isNotLogin {
+  text-align: center;
+  margin: 10em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.isNotLogin > * {
+  margin: 1em;
+}

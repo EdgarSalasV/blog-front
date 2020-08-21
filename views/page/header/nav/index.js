@@ -51,7 +51,7 @@ const Nav = () => {
                 <LinkHash id='what-we-do' onClick={() => setOpen(false)}> What we do </LinkHash>
                 <LinkHash id='who-we-are' onClick={() => setOpen(false)}> Who we are </LinkHash>
                 <LinkHash id='contact-us' onClick={() => setOpen(false)}> Contact us </LinkHash>
-                <LinkCustom href='/blog'> Blog </LinkCustom>
+                <LinkCustom href='/blogs'> Blog </LinkCustom>
                 <LinkCustom href={user ? '/user' : '/login'}>
                     <button className='btnAction'> { user ? 'Usuario' : 'Login' } </button>
                 </LinkCustom>
