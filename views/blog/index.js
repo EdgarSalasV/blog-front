@@ -38,7 +38,7 @@ const index = () => {
           <em key={i} className={"em" + setCapitalize(color)}>{title}</em>) }
         </div>
         <p>{smallDescription}</p>
-        <Link href="/blog/[id]" as={"/blog/" + encodeURI(title) }>
+        <Link href="/blogs/[id]" as={"/blogs/" + id }>
           <a className={`${classes.button} btnAction`}>
             Read more...
           </a>
