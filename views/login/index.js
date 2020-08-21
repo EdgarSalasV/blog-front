@@ -15,6 +15,11 @@ const Input = ({ value, setValue, ...props }) => {
     )
 }
 
+const PORT = process.env.NEXT_PUBLIC_PORT_LOOBACK
+const NEXT_PUBLIC_HOST = process.env.NEXT_PUBLIC_HOST
+
+console.log(PORT, NEXT_PUBLIC_HOST)
+
 const Login = () => {
     const router = useRouter()
     const { setUser, user } = useContext(AppContext) 
@@ -32,7 +37,7 @@ const Login = () => {
             }
         }
 
-        fetch('http://localhost:3001/users/login', config)
+        fetch(NEXT_PUBLIC_HOST + ':' + PORT + '/users/login', config)
             .then(res => res.json())
             .then(({ token }) => {
                 if(token){
