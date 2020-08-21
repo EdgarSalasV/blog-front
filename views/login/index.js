@@ -1,8 +1,10 @@
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import Logo from '../../sharedComponents/logo'
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import classes from './style.module.css'
-import { setLogin, setLogout } from '../../utils/session'
+import { setLogin } from '../../utils/session'
+import { AppContext } from '../page'
 
 const Input = ({ value, setValue, ...props }) => {
     return (
@@ -14,6 +16,8 @@ const Input = ({ value, setValue, ...props }) => {
 }
 
 const Login = () => {
+    const router = useRouter()
+    const { setUser } = useContext(AppContext) 
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
 
@@ -26,18 +30,24 @@ const Login = () => {
                 'Content-Type': 'application/json'
             }
         }
-        fetch('/', config)
-            .then(res => res.json())
-            .then(({ token }) => {
-                setLogin({ token, username })
-                router.push('/user')
-            })
-            .catch(console.error)
+
+        // HardCoded
+        const token = 'asdasd'
+        setLogin(setUser, { token, username })
+        router.push('/user')
+
+        // fetch('/', config)
+        //     .then(res => res.json())
+        //     .then(({ token }) => {
+        //         setLogin(setUser, { token, username })
+        //         router.push('/user')
+        //     })
+        //     .catch(console.error)
     }
 
     return (
         <div className={classes.container}>
-            <form className={classes.form}>
+            <form className={classes.form} onClick={e => e.preventDefault()}>
                 <Logo />
                 <h1>Bienvenido!</h1>
                 <Input type='email' placeholder='Username' value={username} setValue={setUsername} />
