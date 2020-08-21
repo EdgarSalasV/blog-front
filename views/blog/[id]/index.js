@@ -3,6 +3,10 @@ import { AppContext } from '../../page'
 import classes from './style.module.css'
 import setCapitalize from '../../../utils/setCapitalize'
 
+const PORT = process.env.NEXT_PUBLIC_PORT_LOOBACK
+const NEXT_PUBLIC_HOST = process.env.NEXT_PUBLIC_HOST
+
+
 const id = ({ id }) => {
 	const [blog, setBlog] = useState({})
 	const { user } = useContext(AppContext)
@@ -16,7 +20,7 @@ const id = ({ id }) => {
 					}
 				}
 
-				fetch('http://localhost:3001/blogs/'+id, config)
+				fetch(NEXT_PUBLIC_HOST + ':' + PORT + '/blogs/'+id, config)
 					.then(res => res.json())
 					.then(setBlog)
 			}

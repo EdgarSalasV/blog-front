@@ -1,14 +1,25 @@
-## Getting Started
+# Login credentials
+username: edgar@blog.com
+password: mypassword
 
-First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
+## Deployment
+Add in the root directory a file named ".env.local" with:
+```
+NEXT_PUBLIC_HOST            = http://54.174.233.102
+NEXT_PUBLIC_PORT_LOOBACK    = 3001
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+Then run this in console:
+
+```bash
+npm run build
+
+npm start
+```
+And done!
+
 
 ## About
 

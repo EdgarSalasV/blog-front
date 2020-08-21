@@ -4,6 +4,9 @@ import Link  from "next/link";
 import classes from "./style.module.css";
 import setCapitalize from '../../utils/setCapitalize'
 
+const PORT = process.env.NEXT_PUBLIC_PORT_LOOBACK
+const NEXT_PUBLIC_HOST = process.env.NEXT_PUBLIC_HOST
+
 const index = () => {
   const [blogs, setBlogs] = useState([])
   const { user } = useContext(AppContext)
@@ -16,7 +19,7 @@ const index = () => {
         }
       }
   
-      fetch('http://localhost:3001/blogs', config)
+      fetch(NEXT_PUBLIC_HOST + ':' + PORT + '/blogs', config)
         .then(res => res.json())
         .then(setBlogs)
     }
