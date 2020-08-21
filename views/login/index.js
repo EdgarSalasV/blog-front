@@ -42,7 +42,7 @@ const Login = () => {
             .then(({ token }) => {
                 if(token){
                     setLogin(setUser, { token, username })
-                    router.push('/user')
+                    router.push('/')
                 }
             })
             .catch(err => {
