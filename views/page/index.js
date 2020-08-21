@@ -112,7 +112,6 @@ const index = ({ children }) => {
     const [user, setUser] = useState(null)
 
     useEffect(() => {
-        console.log(user)
         if(user) {
             setupAxios(axios, user.token)
         }

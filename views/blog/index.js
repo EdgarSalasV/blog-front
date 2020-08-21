@@ -10,17 +10,15 @@ const index = () => {
 
   useEffect(() => {
     if(user) {
-      if(user.token && !blogs.length) {
-        const config = {
-          headers: {
-            'Authorization': 'Bearer ' + user.token
-          }
+      const config = {
+        headers: {
+          'Authorization': 'Bearer ' + user.token
         }
-    
-        fetch('http://localhost:3001/blogs', config)
-          .then(res => res.json())
-          .then(setBlogs)
       }
+  
+      fetch('http://localhost:3001/blogs', config)
+        .then(res => res.json())
+        .then(setBlogs)
     }
   }, [user])
 
@@ -49,12 +47,34 @@ const index = () => {
 
   return (
     <>
-      <h2 className={`secondTitle ${classes.blogTitle}`}>Blogs</h2>
-      <section className={classes.cardRow}>
-        {getCardData()}
-      </section>
+    {
+      user
+        ? (
+          <>
+            <h2 className={`secondTitle ${classes.blogTitle}`}>Blogs</h2>
+            <section className={classes.cardRow}>
+              {getCardData()}
+            </section>
+          </>
+        )
+        : <IsNotLogin />
+    }
     </>
   );
 };
+
+const IsNotLogin = () => {
+  return (
+    <div className={classes.isNotLogin}>
+      <h1>Hey! <br/> You need to login to see the blogs </h1>
+      <Link href='/login'>
+        <a className='btnAction'>
+          Ir al Login
+        </a>
+      </Link>
+    </div>
+
+  )
+}
 
 export default index;
